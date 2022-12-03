@@ -21,9 +21,16 @@
             margin: 10px
         }
 
+        #msg {
+            font-family: sans-serif;
+            color: rgb(175, 27, 27);
+            padding:10px;
+   
+        }
+
         .textarea {
             width: 1155px;
-            height: 500px;
+            height: 300px;
             display: block;
         }
     </style>
@@ -32,6 +39,7 @@
 <body>
     <canvas id="viewport"></canvas>
     <input type="file" name="image_upload" onchange="getFileData(this)" class="selector"></input>
+    <div id="msg"></div>
     <textarea id="output" class="textarea"></textarea>
 </body>
 <script type='text/javascript'>
@@ -96,8 +104,16 @@
             const dot = _fileName.indexOf(".")
             _fileName = _fileName.substring(0, dot)
 
-            document.getElementById("output").value = "";
-            document.getElementById("output").value = `const long ${_fileName}[] PROGMEM = {` + hexString + "};";
+            let textarea = document.getElementById("output");
+            textarea.value = "";
+            textarea.value = `const long ${_fileName}[] PROGMEM = {` + hexString + "};";
+
+            //copy to clipboard
+            navigator.clipboard.writeText(textarea.value);
+            document.getElementById("msg").innerHTML = "Added to clipboard"
+            setTimeout(() => {
+                document.getElementById("msg").innerHTML = ""
+            }, 1500);
         }
         pic.src = _fileName;
     }
