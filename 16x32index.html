@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Get Pixel</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 20px;
+        }
+
+        #viewport {
+            width: 16px;
+            height: 16px;
+            position: relative;
+            top: 3px;
+        }
+
+        .selector {
+            margin: 10px
+        }
+
+        #msg {
+            font-family: sans-serif;
+            color: rgb(175, 27, 27);
+            padding: 10px;
+
+        }
+
+        .textarea {
+            width: 1155px;
+            height: 300px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="viewport"></canvas>
+    <input type="file" name="image_upload" onchange="getFileData(this)" class="selector"></input>
+    <div id="msg"></div>
+    <textarea id="output" class="textarea"></textarea>
+</body>
+<script type='text/javascript'>
+
+    let _fileName;
+    let hex_array = [];
+
+
+    function readFile() {
+
+        var canvas = document.getElementById('viewport');
+        var c = canvas.getContext('2d', { willReadFrequently: true });
+        var ctx = canvas.getContext("2d");
+
+        var pic = new Image();
+        pic.crossOrigin = "Anonymous";
+
+        pic.onload = function () {
+            hex_array = [];
+            canvas.width = pic.width;
+            canvas.height = pic.height;
+
+            ctx.drawImage(pic, 0, 0);
+
+            for (let y = 0; y < pic.height; y++) {  // Iterate from top to bottom
+                let y_pix = y;
+                let row_array = [];
+                for (let x = 0; x < pic.width; x++) {
+                    let x_pix = x;
+
+                    var p = c.getImageData(x_pix, y_pix, 1, 1).data;
+                    let hex = "0x" + rgbToHex(p[0], p[1], p[2]);
+
+                    row_array.push(hex);
+                }
+                if (y % 2 === 0) {  // Reverse every other row
+                    row_array.reverse();
+                }
+                let row_array_str = JSON.stringify(row_array);
+                let row_hex_string = row_array_str.substring(1, row_array_str.length);
+                row_hex_string = row_hex_string.substring(0, row_hex_string.length - 1);
+                row_hex_string = row_hex_string.replace(/["]/g, "");
+
+                hex_array.push(row_hex_string);
+            }
+
+            let array_str = JSON.stringify(hex_array);
+            let hexString = array_str.substring(1, array_str.length);
+            hexString = hexString.substring(0, hexString.length - 1);
+            hexString = hexString.replace(/["]/g, "");
+
+            const dot = _fileName.indexOf(".");
+            _fileName = _fileName.substring(0, dot);
+
+            let textarea = document.getElementById("output");
+            textarea.value = "";
+            textarea.value = `const long ${_fileName}[] PROGMEM = {` + hexString + "};";
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(textarea.value);
+            document.getElementById("msg").innerHTML = "Added to clipboard";
+            setTimeout(() => {
+                document.getElementById("msg").innerHTML = "";
+            }, 1500);
+        }
+        pic.src = _fileName;
+    }
+
+    function componentToHex(c) {
+        let hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+
+    function rgbToHex(r, g, b) {
+        return componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+
+    function getFileData(myFile) {
+
+        var file = myFile.files[0];
+
+        _fileName = file.name;
+
+        readFile();
+    }
+
+
+</script>
+
+</html>

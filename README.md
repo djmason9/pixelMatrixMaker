@@ -3,17 +3,17 @@
 To use this you must have the files local to your computer or on the server then choose the file from that local dir. Also this needs to run in something like apache webserver
 
 
-<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/DigDug01.png"/>
-<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/DigDugMonster01.png"/>
-<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/DonkeyMario01.png"/>
-<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/Frogger01.png"/>
-<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/Qbert01.png"/>
-<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/Sonic01.png"/>
-<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/Monster01.png"/>
+<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/16x16/DigDug01.png"/>
+<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/16x16/DigDugMonster01.png"/>
+<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/16x16/DonkeyMario01.png"/>
+<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/16x16/Frogger01.png"/>
+<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/16x16/Qbert01.png"/>
+<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/16x16/Sonic01.png"/>
+<img src="https://raw.githubusercontent.com/djmason9/pixelMatrixMaker/main/16x16/Monster01.png"/>
 
 #
  
-# Matrix direction
+# Matrix direction for 16x16
 <pre style="width:550px">
 -->|-->|-->|-->|-->|-->|-->|-->|-->|-->|-->|-->|-->|-->|-->|-->|
 |<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--
@@ -31,6 +31,29 @@ To use this you must have the files local to your computer or on the server then
 |<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--
 -->|-->|-->|-->|-->|-->|-->|-->|-->|-->|-->|-->|-->|-->|-->|-->|
 |<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--|<--
+</pre>
+
+# Matrix direction for 16x32
+<pre style="width:550px">
+-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+|  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^
+V  |  V  |  V  |  V  |  V  |  V  |  V  |  V  |  V  |
+-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+|  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^
+V  |  V  |  V  |  V  |  V  |  V  |  V  |  V  |  V  |
+-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+|  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^
+V  |  V  |  V  |  V  |  V  |  V  |  V  |  V  |  V  |
+-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+|  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^
+V  |  V  |  V  |  V  |  V  |  V  |  V  |  V  |  V  |
+-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+|  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^
+V  |  V  |  V  |  V  |  V  |  V  |  V  |  V  |  V  |
+-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+|  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^
+V  |  V  |  V  |  V  |  V  |  V  |  V  |  V  |  V  |
+-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 </pre>
 
 # Example
